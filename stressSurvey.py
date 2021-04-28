@@ -15,12 +15,12 @@ user_select = ""
 
 root = tkinter.Tk()
 root.title("Stress Level Survey")
-root.geometry("700x600")
+root.geometry("670x200")
 root.config(background="white")
 root.resizable(0,0)
 
 #label creation
-label = tk.Label(text="How stressed are you on a scale of 1-5 (1 being no stress at all and 5 being very overwhelmed)?\n", font=('Arial', 15)).grid(column=0, row=0)
+label = tk.Label(text="\nHow stressed are you on a scale of 1-5 (1 being no stress at all and 5 being very overwhelmed)?\n", font=('Arial', 15)).grid(column=0, row=0,padx=(10, 10))
 #label.config(font=('Courier', 20))
 
 #Action
@@ -66,7 +66,7 @@ def ButtonCallBack():
    
 
 button = tk.Button(root, text="Submit", bg='#1E90FF', command=ButtonCallBack)
-button.place(x=500, y=200)
+button.grid(row=9,column=0,columnspan=5)
 
 def disable_event():
    messagebox.showinfo("Message", "Please answer the stress survey and press 'submit' to continue to the game")
