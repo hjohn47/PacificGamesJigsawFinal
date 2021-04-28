@@ -1,19 +1,21 @@
 import tkinter
 import random
 import json
-from tkinter import *
-from tkinter import ttk
 import tkinter as tk
 from datetime import datetime
 import time
 import subprocess
 from tkinter import messagebox
-#import menu.py
 
+"""
+	Stress Survey, this will survey the user on his stress level before the game starts and when user closes the game
+"""
+
+#user selected radio button
 global user_select
 user_select = ""
 
-root = tkinter.Tk()
+root = tk.Tk()
 root.title("Stress Level Survey")
 root.geometry("670x200")
 root.config(background="white")
@@ -23,22 +25,25 @@ root.resizable(0,0)
 label = tk.Label(text="\nHow stressed are you on a scale of 1-5 (1 being no stress at all and 5 being very overwhelmed)?\n", font=('Arial', 15)).grid(column=0, row=0,padx=(10, 10))
 #label.config(font=('Courier', 20))
 
-#Action
+#Action. 
 def radioCall():
-   radioSel=radioVar.get()
-   global user_select
-   if radioSel== 1:
-      user_select = "Selected 1, no stress"
-   elif radioSel== 2:
-      user_select = "Selected 2, very little stress"
-   elif radioSel== 3:
-      user_select = "Selected 3, somewhat stressed"
-   elif radioSel== 4:
-      user_select = "Selected 4, pretty stressed"
-   elif radioSel== 5:
-      user_select = "Selected 5, very stressed/overwhelmed"
+	"""
+		When Radio Button selected, we update user_select with latest value chosen
+	"""
+	radioSel=radioVar.get()
+	global user_select
+	if radioSel== 1:
+		user_select = "Selected 1, no stress"
+	elif radioSel== 2:
+		user_select = "Selected 2, very little stress"
+	elif radioSel== 3:
+		user_select = "Selected 3, somewhat stressed"
+	elif radioSel== 4:
+		user_select = "Selected 4, pretty stressed"
+	elif radioSel== 5:
+		user_select = "Selected 5, very stressed/overwhelmed"
 
-#Create 5 Radio Button
+#Create 5 Radio Button, for stress level 1 2 3 4 5
 radioVar= tk.IntVar()
 radio1=tk.Radiobutton(root, text="1", variable=radioVar, value=1, command=radioCall)
 radio1.grid(column=0,row=3, columnspan=5)
@@ -52,24 +57,33 @@ radio5=tk.Radiobutton(root, text="5", variable=radioVar, value=5, command=radioC
 radio5.grid(column=0,row=7, columnspan=5)
 
 def ButtonCallBack():
-   if user_select:
-      with open("stressSurveyResults.txt", 'a') as file2:
-         file2.write("\n")
-         localtime = time.asctime(time.localtime(time.time()))
-         file2.write(localtime + ": ")
-         #file2.write(str(date.today()))
-         file2.write(user_select)
-      root.destroy()
-   else:
-      messagebox.showinfo("Message", "Please make a selection")
-   #subprocess.check_output([sys.executable, "main.py"])
+	"""
+		When submit Button selected, we will write the result to stressSurveyResults.txt
+		If user hasnt selected a radiobutton, just show him popup message that he needs to do selection before submitting
+	"""
+	if user_select:
+		with open("stressSurveyResults.txt", 'a') as file2:
+			file2.write("\n")
+			localtime = time.asctime(time.localtime(time.time()))
+			file2.write(localtime + ": ")
+			#file2.write(str(date.today()))
+			file2.write(user_select)
+		root.destroy()
+	else:
+		messagebox.showinfo("Message", "Please make a selection")
+	#subprocess.check_output([sys.executable, "main.py"])
    
 
 button = tk.Button(root, text="Submit", bg='#1E90FF', command=ButtonCallBack)
 button.grid(row=9,column=0,columnspan=5)
 
 def disable_event():
-   messagebox.showinfo("Message", "Please answer the stress survey and press 'submit' to continue to the game")
+	"""
+		when user clicks the X on top side corner, we make sure to force him to do this survey and not close it.
+	"""
+	messagebox.showinfo("Message", "Please answer the stress survey and press 'submit' to continue to the game")
+
+#disable closing survey without submitting
 root.protocol("WM_DELETE_WINDOW", disable_event)
 
 #Calling Main()
