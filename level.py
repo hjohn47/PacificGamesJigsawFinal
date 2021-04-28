@@ -9,16 +9,27 @@ import re
 __author__ = "Hailey Johnson, Krikor Herlopian, Charitha Sree Jayaramireddy , Syrina Haldiman and Tatiyana Bramwell"
 __copyright__ = "Copyright 2021, University of New Haven Final Project"
 
+"""
+	This page to allow the user to choose the level of the game.
+	Level 1 means 2*2
+	Level 2 means 5*5
+	Level 3 means 6*6
+	Level 4 means 8*8
+	Level 5 means 10*10
+"""
 
 def center_window(width=200, height=100):
-    # get screen width and height
-    screen_width = master.winfo_screenwidth()
-    screen_height = master.winfo_screenheight()
-
-    # calculate position x and y coordinates
-    x = (screen_width/2) - (width/2)
-    y = (screen_height/2) - (height/2)
-    master.geometry('%dx%d+%d+%d' % (width, height, x, y))
+	"""
+		center screen on window
+	"""
+		
+	# get screen width and height
+	screen_width = master.winfo_screenwidth()
+	screen_height = master.winfo_screenheight()	
+	# calculate position x and y coordinates
+	x = (screen_width/2) - (width/2)
+	y = (screen_height/2) - (height/2)
+	master.geometry('%dx%d+%d+%d' % (width, height, x, y))
 
 
 
@@ -31,10 +42,12 @@ def onClick(i):
     #update lev.txt file with new level number.
     with open("lev.txt", "w") as f:
         f.write(str(i))
-    print(str(i))
+    print(str(i))#this returns value to caller
     master.destroy()
     return
 
+
+#add image numbers to the screen as Buttons
 
 
 image = Image.open("numbers/1.png")
