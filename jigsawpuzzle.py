@@ -28,15 +28,18 @@ def grab(screen, x, y, width, height):
     
 #resize image down to 1 pixel. Get most dominant color.
 def get_dominant_color(pil_img):
-    img = pil_img.copy()
-    img.convert("RGB")
-    img.resize((1, 1), resample=0)
-    dominant_color = img.getpixel((0, 0))
-    return dominant_color
+	"""
+		Get the most dominant color of the image
+	"""
+	img = pil_img.copy()
+	img.convert("RGB")
+	img.resize((1, 1), resample=0)
+	dominant_color = img.getpixel((0, 0))
+	return dominant_color
 
 #
 def floor(number_to_round):
-	"Return a rounded number. Ex.: 510 => 500; 36 => 30"
+	"Return a rounded number. Ex.: 520 => 500; 26 => 20"
 	str_number = str(number_to_round)
 	#EXAMPLE 510 will give length_string = 3. 90 will give length_string = 2 
 	length_string = len(str_number)
@@ -63,6 +66,9 @@ class Puzzle:
 	
 	@staticmethod
 	def setValues():
+		"""
+			Set all values of puzzle.based on image size.
+		"""
 		global imageSelected
 		Puzzle.tiles_positioned_correct = 0
 		Puzzle.photo = pygame.image.load(imageSelected)
@@ -82,10 +88,16 @@ class Tile:
 	height = 0	
 	@staticmethod
 	def setValues(level):
+		"""
+			set tiles based on level, level 1 means we want to have 2*2.
+		"""
 		Tile.width = Puzzle.width // int(level)
 		Tile.height = Puzzle.height // int(level)
 
 def check_if_ok(tile3, tile1, numtile):
+	"""
+		We are checking if tile put in correct position, and also if puzzle is completed.
+	"""
 	global rects3, puzzle3, puzzle,imageSelected
 	# Check if the images are the same (same color)
 	uguale = 0
@@ -120,16 +132,22 @@ def blit(part, x, y):
 	Puzzle.screen.blit(part, (x, y))
 
 def play(snd):
+	"""
+		play sound
+	"""
 	pygame.mixer.Sound.play(Puzzle.sounds[snd])
 
 def get_coordinates(event):
-    global coords
-    mousex, mousey = event
-    mx = ((mousex - 7 - Puzzle.width // 2) // Tile.width ) * Tile.width
-    my = (mousey // Tile.height) * Tile.height
-    for coord in coords:
-        if coord[1] == mx and coord[2] == my:
-            return coord
+	"""
+		get coordinates of event.
+	"""
+	global coords
+	mousex, mousey = event
+	mx = ((mousex - 7 - Puzzle.width // 2) // Tile.width ) * Tile.width
+	my = (mousey // Tile.height) * Tile.height
+	for coord in coords:
+		if coord[1] == mx and coord[2] == my:
+			return coord
 
 def get_coordinates2(event):
     "Returns the coordinates of the piece you leave on the table"
@@ -147,7 +165,9 @@ def get_coordinates2(event):
             return coord
 
 class Event_listener():
-	"How to exit from the game"
+	"""
+		detect all mouse events/movements/drags, and if user quit too.
+	"""
 	global coords, puzzle2, blacktile, puzzle3, textRect
 	drag = 0
 	p2pos = 0
@@ -299,7 +319,7 @@ def show_puzzleThree():
 	draw_grid2()
 
 def draw_grid():
-    "Draws the grid 10x10 for 40x50 tiles"
+    "Draws the grid. if level 5 = 10x10 for 40x50 tiles"
     def draw_horizzontal():
         x = Puzzle.width // 2 + 7 # always equal to 500
         y = index * Tile.height
@@ -319,7 +339,7 @@ def draw_grid():
         draw_vertical()
 
 def draw_grid2():
-    "Draws the grid 10x10 for 40x50 tiles"
+    "Draws the grid .if level 5 = 10x10 for 40x50 tiles"
     def draw_horizzontal():
         x = Puzzle.width * 2 - Puzzle.width // 2 + 14 # always equal to 500
         y = index * Tile.height # goes down by 50, 100 .....
@@ -343,7 +363,7 @@ def bars():
     Puzzle.screen.blit(Puzzle.bar, (Puzzle.width // 2 + Puzzle.width + 7, 0))
 
 def mainStart(imageUrl,level):
-	#you need to call here to start the game, by passing the image path parameter.
+	#you need to call here to start the game, by passing the image path parameter. Also the level.
 	global imageSelected,blacktile
 	#set the image selected to play jigsaw puzzle game
 	imageSelected = imageUrl
@@ -355,8 +375,8 @@ def mainStart(imageUrl,level):
 	start()
 	
 def start():
-	global textRect,playing,postCongratulations
 	"The game begins here"
+	global textRect,playing,postCongratulations
 	# creates puzzle grabbing pieces from this image
 	create_puzzle()
 	playing = True
@@ -375,8 +395,6 @@ def start():
 		# User input
 		Event_listener().check()
 		txtMsg = "Back"
-		#if postCongratulations:
-		#	txtMsg = "You Won"
 		
 		# let us add the back button to the game, allow user to return to main menu.
 		smallText = pygame.font.Font("freesansbold.ttf", 30)
