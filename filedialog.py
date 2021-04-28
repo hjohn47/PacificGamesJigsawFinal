@@ -13,6 +13,9 @@ __copyright__ = "Copyright 2021, University of New Haven Final Project"
 
 
 def showFileDialog():
+	"""
+		ask user to choose an image, we need to make sure this image meets the size too ( >500 and < 700)
+	"""
 	try:
 		image_file_name = tkinter.filedialog.askopenfilename(filetypes=[("Image File",['.jpg','.jpeg','.png'])])
 		if image_file_name:
