@@ -1,14 +1,20 @@
 from tkinter import *
 from PIL import ImageTk, Image
-def center_window(width=800, height=800):
-    # get screen width and height
-    screen_width = root.winfo_screenwidth()
-    screen_height = root.winfo_screenheight()
 
-    # calculate position x and y coordinates
-    x = (screen_width/2) - (width/2)
-    y = (screen_height/2) - (height/2)
-    root.geometry('%dx%d+%d+%d' % (width, height, x, y))
+"""
+	When user wins this game, this page will be displayed. Congratulations Image.
+"""
+def center_window(width=800, height=800):
+	"""
+		this will center the screen on window
+	"""
+	# get screen width and height
+	screen_width = root.winfo_screenwidth()
+	screen_height = root.winfo_screenheight()
+	# calculate position x and y coordinates
+	x = (screen_width/2) - (width/2)
+	y = (screen_height/2) - (height/2)
+	root.geometry('%dx%d+%d+%d' % (width, height, x, y))
     
 
 root = Tk()
