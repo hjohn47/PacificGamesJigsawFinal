@@ -82,11 +82,11 @@ def button(msg, x, y, w, h, ic, ac, action=None):   #ic inactive color, ac activ
 			if action == "instructionsfile":
                 #open in wordpad for windows and textedit for mac
 				if platform.system() == 'Darwin':  # macOS
-					subprocess.call(('open', "instructionstest.pdf"))    #could also use text file
+					subprocess.call(('open', "Instructions.pdf"))    #could also use text file
 				elif platform.system() == 'Windows':  # Windows
-					os.startfile("instructionstest.pdf")
+					os.startfile("Instructions.pdf")
 				else:  # linux variants
-					subprocess.call(('xdg-open', "instructionstest.pdf"))
+					subprocess.call(('xdg-open', "Instructions.pdf"))
 	else:
 		pygame.draw.rect(background, ic, (x, y, w, h))
 
