@@ -44,12 +44,15 @@ selectedImg = None
 downloading = False	#indicates if download button clicked or not. If clicked we will use this to disable downloading while another downloading is going on.
 
 
-
+#colors
 yellow = (255,252,187)
 white = (255,255,255)
 black = (0,0,0)
 
 def mainStart():
+	"""
+		starting point of the application.
+	"""
 	global background, window
 	pygame.init()
 	size = (850,880)
@@ -68,14 +71,20 @@ def mainStart():
 	gameloop()
 
 def text_objects (text, font):
-    textSurface = font.render(text,True, black)
-    return textSurface, textSurface.get_rect()
+	"""
+		Displaying text on screen
+	"""
+	textSurface = font.render(text,True, black)
+	return textSurface, textSurface.get_rect()
 
 def button(msg, x, y, w, h, ic, ac, action=None):   #ic inactive color, ac active color
+	"""
+		Displaying button on screen. In case instruction button clicked, we open its Instructions.pdf .
+	"""
 	global selectedPath,lstOfPics
 	mouse = pygame.mouse.get_pos()
 	click = pygame.mouse.get_pressed()
-    # print(mouse)
+	# print(mouse)
 	if x + w > mouse[0] > x and y + h > mouse[1] > y:
 		pygame.draw.rect(background, ac, (x, y, w, h))
 		if click[0] == 1 and action != None:
@@ -97,6 +106,9 @@ def button(msg, x, y, w, h, ic, ac, action=None):   #ic inactive color, ac activ
 
 #puzzle selected to be played drawn on screen.		
 def drawPuzzleSelected():
+	"""
+		this will draw the image chosen on screen. 
+	"""
 	global selectedImg,lstOfPics,selectedPath
 	if len(lstOfPics) > 0:
 		selectedImg = pygame.image.load(lstOfPics[selectedPath]).convert()		
@@ -105,6 +117,10 @@ def drawPuzzleSelected():
 
 #download puzzles from internet
 def downloadImages():
+	"""
+		Makes api call to http://fancycars.atwebpages.com/images.json
+		Downloads all new images, in case images exist no need to write again
+	"""
 	global downloading
 	print("downloading...")
 	#call api to get list of all images
@@ -130,12 +146,18 @@ def downloadImages():
 	
 #check if baseimages folder exists, if yes lets find images in them.
 def searchImages():
+	"""
+		find all images in baseimages folder
+	"""
 	dir = "baseimages"
 	if os.path.exists(dir):
 		findImages(dir)
 
 #loop over directory, to find images and add them to lstOfPics. First image will be displayed.
 def findImages(d):
+	"""
+		find all images, and append them to lstOfPics.You will have list of images from baseimages folder
+	"""
 	global selectedImg,lstOfPics,selectedPath
 	for path in os.listdir(d):
 		full_path = os.path.join(d, path)
@@ -146,6 +168,10 @@ def findImages(d):
 				
 #opens a dialog for user to select a file to add to the game.
 def choose_a_file():
+	"""
+		A dialog opened, for user to select a file to choose. File will be of image type.
+		If successfully added, we copy the image to baseimages folder. And make it available to be played
+	"""
 	try:
 		global lstOfPics,selectedPath
 		image_file_name = subprocess.check_output([sys.executable, "filedialog.py"])
@@ -163,6 +189,9 @@ def choose_a_file():
 	
 #user chooses level of game, number of titles.	
 def choose_a_level():
+	"""
+		A dialog where you can choose up to 5 levels, 1 -> 5. Difficulty of the game.
+	"""
 	try:
 		global level
 		new_level = subprocess.check_output([sys.executable, "level.py"])
@@ -175,6 +204,9 @@ def choose_a_level():
 
 #turn music on/off
 def play_stop_music():
+	"""
+		when space bar clicked, turn the relaxing music on or off
+	"""
 	global music_on
 	music_on = not music_on
 	if music_on:
@@ -185,6 +217,9 @@ def play_stop_music():
 		
 		
 def gameloop():
+	"""
+		game loop. loop and draw the buttons/texts/images..and detect the clicks.
+	"""
     #game loop
 	global selectedPath,lstOfPics,level
 	running = True
