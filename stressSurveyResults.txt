@@ -1,0 +1,11 @@
+Stress Survey Results:
+Sat Apr 24 17:23:57 2021: Selected 4, pretty stressed
+Sat Apr 24 17:24:03 2021: Selected 1, no stress
+Sat Apr 24 17:33:04 2021: Selected 4, pretty stressed
+Sat Apr 24 17:33:17 2021: Selected 1, no stress
+Wed Apr 28 08:32:15 2021: Selected 4, pretty stressed
+Wed Apr 28 08:41:04 2021: Selected 3, somewhat stressed
+Wed Apr 28 09:08:57 2021: Selected 4, pretty stressed
+Wed Apr 28 09:16:56 2021: Selected 5, very stressed/overwhelmed
+Wed Apr 28 10:27:26 2021: Selected 4, pretty stressed
+Wed Apr 28 10:27:32 2021: Selected 4, pretty stressed
