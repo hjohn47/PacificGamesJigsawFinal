@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-	Main menu screen.
+	Main menu screen. 
+	Instructions, choosing puzzle, downloading new puzzle, uploading puzzle, survey, turning music on/off
 """
 
 import pygame

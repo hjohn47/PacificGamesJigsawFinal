@@ -1,1 +1,4 @@
 Stress Survey Results:
+
+Wed Apr 28 12:02:47 2021: Selected 5, very stressed/overwhelmed
+Wed Apr 28 12:02:50 2021: Selected 1, no stress
