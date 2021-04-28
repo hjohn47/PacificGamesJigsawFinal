@@ -9,3 +9,4 @@ Wed Apr 28 09:08:57 2021: Selected 4, pretty stressed
 Wed Apr 28 09:16:56 2021: Selected 5, very stressed/overwhelmed
 Wed Apr 28 10:27:26 2021: Selected 4, pretty stressed
 Wed Apr 28 10:27:32 2021: Selected 4, pretty stressed
+Wed Apr 28 10:59:48 2021: Selected 3, somewhat stressed
