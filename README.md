@@ -17,7 +17,7 @@ Some feature of the game:
 Puzzle Game
 - Has 3 parts. 
 - first part the real image + back button to go back. 
-- second part the shuffle pieces of the image. 
+- second part the shuffled pieces of the image. 
 - third part where you will drag the pieces from 2nd part.
 - once you correctly place the pieces, you get congratulations screen for 4 seconds.
 
