@@ -32,3 +32,4 @@ The game covered many things we learned in class:
 - Using random, to shuffle pieces.
 - List Comprehension, in floor (jigsawpuzzle.py) function.
 - Class Attributes (check Puzzle, Tile)
+- Keen Framework
