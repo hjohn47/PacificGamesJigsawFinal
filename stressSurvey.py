@@ -77,13 +77,10 @@ def ButtonCallBack():
 			file2.write("\n")
 			localtime = time.asctime(time.localtime(time.time()))
 			file2.write(localtime + ": ")
-			#file2.write(str(date.today()))
 			file2.write(user_select)
 		root.destroy()
 	else:
 		messagebox.showinfo("Message", "Please make a selection")
-	#subprocess.check_output([sys.executable, "main.py"])
-   
 
 button = tk.Button(root, text="Submit", bg='#1E90FF',width=10, command=ButtonCallBack)
 button.grid(row=9,column=0,columnspan=5,pady=(20,20))
