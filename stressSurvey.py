@@ -17,7 +17,6 @@ user_select = ""
 
 root = tk.Tk()
 root.title("Stress Level Survey")
-root.geometry("670x200")
 root.config(background="white")
 root.resizable(0,0)
 
@@ -56,6 +55,18 @@ radio4.grid(column=0,row=6, columnspan=5)
 radio5=tk.Radiobutton(root, text="5", variable=radioVar, value=5, command=radioCall)
 radio5.grid(column=0,row=7, columnspan=5)
 
+def center_window(width=800, height=800):
+	"""
+		this will center the screen on window
+	"""
+	# get screen width and height
+	screen_width = root.winfo_screenwidth()
+	screen_height = root.winfo_screenheight()
+	# calculate position x and y coordinates
+	x = (screen_width/2) - (width/2)
+	y = (screen_height/2) - (height/2)
+	root.geometry('%dx%d+%d+%d' % (width, height, x, y))
+	
 def ButtonCallBack():
 	"""
 		When submit Button selected, we will write the result to stressSurveyResults.txt
@@ -74,8 +85,8 @@ def ButtonCallBack():
 	#subprocess.check_output([sys.executable, "main.py"])
    
 
-button = tk.Button(root, text="Submit", bg='#1E90FF', command=ButtonCallBack)
-button.grid(row=9,column=0,columnspan=5)
+button = tk.Button(root, text="Submit", bg='#1E90FF',width=10, command=ButtonCallBack)
+button.grid(row=9,column=0,columnspan=5,pady=(20,20))
 
 def disable_event():
 	"""
@@ -86,6 +97,7 @@ def disable_event():
 #disable closing survey without submitting
 root.protocol("WM_DELETE_WINDOW", disable_event)
 
+center_window(670,240)
 #Calling Main()
 root.mainloop()
 
