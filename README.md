@@ -22,3 +22,13 @@ Puzzle Game
 - once you correctly place the pieces, you get congratulations screen for 4 seconds.
 
 
+The game covered many things we learned in class:
+- Calling internet, making API call and parsing the json file ( images to download)
+- Writing the results of survey to a file
+- When uploading we copy image selected to baseimages folder
+- We used both pygame, and tkinter.
+- Searching directories ( the baseimages directory), and adding the images in baseimages folder to a list of images we have.
+- From our operating systems class, we learned about threading. And when we download images we do it on different thread to avoid the game to be frozen
+- Using random, to shuffle pieces.
+- List Comprehension, in floor (jigsawpuzzle.py) function.
+- Class Attributes (check Puzzle, Tile)
