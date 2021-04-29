@@ -49,7 +49,6 @@ def onClick(i):
 
 #add image numbers to the screen as Buttons
 
-
 image = Image.open("numbers/1.png")
 image = image.resize((64, 64), Image.ANTIALIAS)
 num_img = ImageTk.PhotoImage(image)

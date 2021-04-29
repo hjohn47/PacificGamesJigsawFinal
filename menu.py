@@ -24,8 +24,6 @@ __author__ = "Hailey Johnson, Krikor Herlopian, Charitha Sree Jayaramireddy , Sy
 __copyright__ = "Copyright 2021, University of New Haven Final Project"
 
 
-
-
 level = 1 #number of tiles
 music_on = True
 #one place to store the positions of buttons and their text. Modify here to change their placing, without touching the logic.

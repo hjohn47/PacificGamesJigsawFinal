@@ -1,9 +1,14 @@
+#!/usr/bin/env python3
+"""
+	When user wins this game, this page will be displayed. Congratulations Image.
+	It wil close by itself after four seconds.
+"""
 from tkinter import *
 from PIL import ImageTk, Image
 
-"""
-	When user wins this game, this page will be displayed. Congratulations Image.
-"""
+__author__ = "Charitha Sree Jayaramireddy ,Hailey Johnson, Krikor Herlopian,  Syrina Haldiman and Tatiyana Bramwell"
+__copyright__ = "Copyright 2021, University of New Haven Final Project"
+
 def center_window(width=800, height=800):
 	"""
 		this will center the screen on window
@@ -16,11 +21,8 @@ def center_window(width=800, height=800):
 	y = (screen_height/2) - (height/2)
 	root.geometry('%dx%d+%d+%d' % (width, height, x, y))
     
-
 root = Tk()
 root.title("Jigsaw - Congratulations")
-
-#root.geometry("800x800+0+0")
 
 center_window()
 back_img = Image.open('congrats1.png')
@@ -30,10 +32,11 @@ background_label = Label(root, image=back_img1, compound = "left", bg = "white",
 background_label.pack(side = "top", fill ="both")
 background_label.place(x=0, y=0, relwidth = 1, relheight = 1)
 i = 0
+#this will close the page
 def destroy():
     root.destroy()
 
+#after four seconds call destroy
 root.after(4000, destroy)
-
 
 root.mainloop()
