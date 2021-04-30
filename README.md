@@ -1,6 +1,10 @@
 # PacificGamesJigsawFinal
 Programming in python final project
 
+You need to install the below for project to work
+- pygame
+- pillow
+
 To run the game, just run 
 python3 main.py
 
